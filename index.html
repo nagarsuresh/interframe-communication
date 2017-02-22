@@ -12,6 +12,10 @@
         <script>
             function publish() {
                 var text = document.getElementById("msg").value;
+                if (!text || text == "") {
+                    alert("Enter some message");
+                    return;
+                }
                 IFC.send({ type: 'Test', data: text });
                 document.getElementById("msg").value = "";
             }
@@ -22,15 +26,20 @@
     <div class="container">
 
         <div class="jumbotron">
-            <h1 class="display-3">Parent document!</h1>
+            <div style="float: right">
+                <a href="https://snagar78.github.io" class="btn btn-primary">Home</a>
+                <a href="https://github.com/snagar78/interframe-communication" class="btn btn-primary">Source (Github Repository)</a>
+            </div>
+            <h1 class="display-6">Parent document!</h1>
             <hr class="my-4">
 
-            <p>
-                <input type="text" id="msg">
-            </p>
-            <p class="lead">
+            <form>
+                <div class="form-group">
+                    <label for="msg">Message</label>
+                    <input type="text" class="form-control" id="msg" placeholder="Type Message">
+                    <small id="msgHelp" class="form-text text-muted">Type message to send to iframes.</small>
+                </div>
                 <a class="btn btn-primary btn-lg" href="javascript:publish()" role="button">Send</a>
-            </p>
         </div>
 
 
