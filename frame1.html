@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+        crossorigin="anonymous">
+        <script src="interframe_communication.js"></script>
+        <script>
+            function onBodyLoad() {
+                IFC.on(function(data){
+                    var value = document.getElementById("log").innerHTML;
+                    value += "<br/>" + JSON.stringify(data);
+                    document.getElementById("log").innerHTML = value;
+                });
+            }
+        </script>
+</head>
+
+<body onload="onBodyLoad()">
+    <div class="card">
+        <h3 class="card-header">I-Frame</h3>
+        <div class="card-block">
+            <div id="log"></div>
+        </div>
+    </div>
+</body>
+
+</html>
