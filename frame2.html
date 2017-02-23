@@ -9,7 +9,7 @@
         <script src="interframe_communication.js"></script>
         <script>
             function onBodyLoad() {
-                IFC.on('TYPE1', (data) => {
+                IFC.on('TYPE2', (data) => {
                     var value = document.getElementById("log").innerHTML;
                     value += "<br/>" + JSON.stringify(data);
                     document.getElementById("log").innerHTML = value;
@@ -17,21 +17,20 @@
             }
 
             function publishEvent() {
-                IFC.send({ type: 'TYPE1', payload: new Date() });
+                IFC.send({ type: 'TYPE2', payload: new Date() });
             }
         </script>
 </head>
 
 <body onload="onBodyLoad()">
     <div class="card">
-        <div class="card-header">I-Frame - Registered for TYPE-1 Events Only!!!</div>
+        <div class="card-header">I-Frame - Registered for TYPE-2 Events Only!!!</div>
         <div class="card-block">
             <h6 class="card-title">Received Event Log!</h6>
-
             <div id="log"></div>
         </div>
         <div class="card-footer">
-            <a href="javascript:publishEvent()" class="btn btn-primary">Send TYPE-1 Event</a>
+            <a href="javascript:publishEvent()" class="btn btn-primary">Send TYPE-2 Event</a>
         </div>
     </div>
 </body>
